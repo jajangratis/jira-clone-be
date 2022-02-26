@@ -1,5 +1,6 @@
 const h = require('../helpers/helper')
 const tokenExtractor = require('../api/users/auth/components/extractToken')
+const CTX = require('../config/constants')
 
 exports.tokenExtractor = async (req, res, next) => {
     let result
@@ -13,8 +14,7 @@ exports.tokenExtractor = async (req, res, next) => {
         try {
             let test = await tokenExtractor.extract(token)
             test = test.data
-            console.log({test});
-            if (!h.checkNullQueryAll(test.ID_USER)) {
+            if (!h.checkNullQueryAll(test)) {
                 req.userId = test.ID_USER
                 req.userRole = test.C_ROLE_ID
                 if (h.checkNullQueryAllExtended([test.ID_USER, test.C_ROLE_ID])) {

@@ -23,7 +23,6 @@ exports.postLogin = async (req, res, next) => {
 
 exports.extractToken = async (req, res, next) => {
     let token = req.body.token
-    console.log({token});
     let result = await extractToken.extract(token)
     // result = await h.reportApiLogger(req, res, result);
     return res.status(result.status).json(result);

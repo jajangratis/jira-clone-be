@@ -15,7 +15,6 @@ exports.extract = async(token) => {
             if (err) {
                 return CTX.templateResponse(401, false, err.message)
             }
-            console.log({decoded});
             if (h.checkNullQueryAllExtended([decoded.v_email, decoded.c_role_id], 'and')) {
                 return CTX.templateResponse(400, false, 'no_token_provided')
             };

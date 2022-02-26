@@ -7,7 +7,6 @@ const CTX = require('../../../../config/constants');
 const moment = require('moment');
 
 exports.login = async (username, password, long, ip) => {
-    console.log({username, password, long, ip});
     if (h.checkNullQueryAll(username, password)) {
         return CTX.invalidParameter()
     } else {
