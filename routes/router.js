@@ -32,8 +32,11 @@ router.post('/sprints/finish-sprint', tokenExtractor.tokenExtractor, sprintContr
 
 // Backlogs
 router.get('/backlogs', tokenExtractor.tokenExtractor, backlogsController.getBacklogsData)
+router.get('/backlogs/detail', tokenExtractor.tokenExtractor, backlogsController.getBacklogDetailData)
 router.get('/backlogs/task', tokenExtractor.tokenExtractor, backlogsController.getBacklogTaskData)
 router.post('/backlogs/add', tokenExtractor.tokenExtractor, backlogsController.postBacklogsAddData)
+router.post('/backlogs/edit', tokenExtractor.tokenExtractor, backlogsController.postBacklogsEditData)
+router.post('/backlogs/delete', tokenExtractor.tokenExtractor, backlogsController.postDeleteTaskData)
 
 // Master
 router.get('/master/data', tokenExtractor.tokenExtractor, masterController.getData)

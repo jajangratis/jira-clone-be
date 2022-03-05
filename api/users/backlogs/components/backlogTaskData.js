@@ -15,6 +15,8 @@ exports.backlogTaskData = async (c_backlog_id) => {
         WHERE
             c_status_id = 1 
             and c_backlog_id_parent = ?
+        ORDER BY 
+            id
         `, [c_backlog_id])
         listTask = listTask.rows
         return CTX.okSample(listTask)

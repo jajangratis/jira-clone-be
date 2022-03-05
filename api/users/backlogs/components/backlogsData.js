@@ -22,7 +22,7 @@ exports.backlogsData = async () => {
         let idbacklogs = listSprints.filter(x => !h.checkNullQueryAll(x.agg_c_backlog_id))
         idbacklogs = idbacklogs.map(x => x.agg_c_backlog_id.split(',')).flat()
         let backlogsData = !h.checkNullQueryAll(idbacklogs) && await db.raw(`
-            select * from mst_backlog where c_backlog_id in (${idbacklogs.map(x => `'${x}'`).toString()})
+            select * from mst_backlog where c_backlog_id in (${idbacklogs.map(x => `'${x}'`).toString()}) order by id
         `)
         backlogsData = backlogsData.rows
         listSprints = listSprints.map(x => {
