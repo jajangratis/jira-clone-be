@@ -4,6 +4,7 @@ const backlogsAddTaskData = require('./components/backlogAddData')
 const backlogEditTaskData = require('./components/backlogEditData')
 const backlogDeleteTaskData = require('./components/backlogDeleteData')
 const backlogDetailData = require('./components/backlogsDetailData')
+const backlogParentChild = require('./components/backlogParentChild')
 
 exports.getBacklogsData = async (req, res, next) => {
     let result = await backlogsData.backlogsData()
@@ -13,6 +14,12 @@ exports.getBacklogsData = async (req, res, next) => {
 exports.getBacklogTaskData = async (req, res, next) => {
     const c_backlog_id = req.query.c_backlog_id
     let result = await backlogTaskData.backlogTaskData(c_backlog_id)
+    return res.status(result.status).json(result);
+}
+
+exports.getBacklogParentChild = async (req, res, next) => {
+    const c_backlog_id = req.query.c_backlog_id
+    let result = await backlogParentChild.backlogsParentChild(c_backlog_id)
     return res.status(result.status).json(result);
 }
 

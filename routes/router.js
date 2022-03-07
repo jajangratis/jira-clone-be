@@ -37,6 +37,7 @@ router.get('/backlogs/task', tokenExtractor.tokenExtractor, backlogsController.g
 router.post('/backlogs/add', tokenExtractor.tokenExtractor, backlogsController.postBacklogsAddData)
 router.post('/backlogs/edit', tokenExtractor.tokenExtractor, backlogsController.postBacklogsEditData)
 router.post('/backlogs/delete', tokenExtractor.tokenExtractor, backlogsController.postDeleteTaskData)
+router.get('/backlogs/parent-child', tokenExtractor.tokenExtractor, backlogsController.getBacklogParentChild)
 
 // Master
 router.get('/master/data', tokenExtractor.tokenExtractor, masterController.getData)
