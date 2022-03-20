@@ -19,7 +19,8 @@ exports.getBacklogTaskData = async (req, res, next) => {
 
 exports.getBacklogParentChild = async (req, res, next) => {
     const c_backlog_id = req.query.c_backlog_id
-    let result = await backlogParentChild.backlogsParentChild(c_backlog_id)
+    const c_sprint_id = req.query.c_sprint_id
+    let result = await backlogParentChild.backlogsParentChild(c_sprint_id)
     return res.status(result.status).json(result);
 }
 

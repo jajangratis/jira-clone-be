@@ -12,6 +12,7 @@ const authController = require('../api/users/auth/authController')
 const sprintController = require('../api/users/sprints/sprintsController')
 const backlogsController = require('../api/users/backlogs/backlogsController')
 const masterController = require('../api/users/master/masterController')
+const retrospectiveController = require('../api/users/retrospective/retrospectiveController')
 
 /**
  * Auth
@@ -42,5 +43,11 @@ router.get('/backlogs/parent-child', tokenExtractor.tokenExtractor, backlogsCont
 // Master
 router.get('/master/data', tokenExtractor.tokenExtractor, masterController.getData)
 router.get('/master/user', tokenExtractor.tokenExtractor, masterController.getUserInfo)
+
+// Retrospective
+router.get('/retro/data', tokenExtractor.tokenExtractor, retrospectiveController.getData)
+router.post('/retro/add', tokenExtractor.tokenExtractor, retrospectiveController.postAddData)
+router.post('/retro/edit', tokenExtractor.tokenExtractor, retrospectiveController.postEditData)
+router.post('/retro/delete', tokenExtractor.tokenExtractor, retrospectiveController.postDeleteData)
 
 module.exports = router;
