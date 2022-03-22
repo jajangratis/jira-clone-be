@@ -31,6 +31,8 @@ exports.backlogsParentChild = async (c_sprint_id) => {
             WHERE
                 A.c_backlog_id_parent IS NULL 
                 AND B.c_sprint_id = ?
+                and A.c_status_id = 1
+                and B.c_status_id = 1
             ORDER BY
                 A.ID ASC
         `, [activeSprint.c_sprint_id])
@@ -39,7 +41,8 @@ exports.backlogsParentChild = async (c_sprint_id) => {
             for (let index = 0; index < backlogsData.length; index++) {
                 let x = backlogsData[index];
                 x.childData = await db.raw(`
-                select * from mst_backlog where c_backlog_id_parent = ? order by id ASC
+                select * from mst_backlog where c_backlog_id_parent = ? 
+                and c_status_id = 1order by id ASC
                 `,[x.c_backlog_id]) 
                 x.childData = x.childData.rows
             }
