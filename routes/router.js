@@ -21,6 +21,10 @@ const retrospectiveController = require('../api/users/retrospective/retrospectiv
 router.post('/auth/login', authController.postLogin);
 router.post('/auth/extract-token',authController.extractToken)
 router.post('/auth/encrypter',authController.encrypter)
+router.get('/auth/user/list', tokenExtractor.tokenExtractor, authController.getUserList)
+router.post('/auth/user/add', tokenExtractor.tokenExtractor, authController.postAddUserList)
+router.post('/auth/user/edit', tokenExtractor.tokenExtractor, authController.postEditUserList)
+router.post('/auth/user/delete', tokenExtractor.tokenExtractor, authController.postDeleteUserList)
 
 
 // Sprint

@@ -65,6 +65,9 @@ exports.postBacklogsEditData = async (req, res, next) => {
         v_priority,
         c_progress_id,
         c_sprint_id,
+        v_repo_link,
+        v_design_link,
+        v_web_link,
     } = req.body
     let result = await backlogEditTaskData.backlogTaskEditData({
         c_backlog_id,
@@ -76,6 +79,9 @@ exports.postBacklogsEditData = async (req, res, next) => {
         v_priority,
         c_progress_id,
         c_sprint_id,
+        v_repo_link,
+        v_design_link,
+        v_web_link,
     })
     return res.status(result.status).json(result);
 }

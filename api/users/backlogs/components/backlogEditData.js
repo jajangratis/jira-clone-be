@@ -17,6 +17,10 @@ exports.backlogTaskEditData = async ({
     c_progress_id='todo',
     c_sprint_id,
     c_backlog_id,
+    v_repo_link,
+    v_design_link,
+    v_web_link,
+
 }) => {
     if (h.checkNullQueryAllExtended([c_backlog_id])) {
         return CTX.invalidParameter()
@@ -30,6 +34,9 @@ exports.backlogTaskEditData = async ({
             v_story_point,
             v_priority,
             c_progress_id,
+            v_repo_link,
+            v_design_link,
+            v_web_link,
         })
         if (h.checkNullQueryAll(c_backlog_id_parent)) {
             await db('tr_sprint_backlog').where('c_backlog_id', c_backlog_id).update({
